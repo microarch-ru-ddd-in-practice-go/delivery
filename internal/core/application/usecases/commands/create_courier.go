@@ -79,7 +79,7 @@ func (ch *createCourierCommandHandler) Handle(ctx context.Context, cmd CreateCou
 	if err != nil {
 		return err
 	}
-	err = courierAggregate.AddStoragePlace("bag", 8)
+	err = courierAggregate.AddStoragePlace("bag", 40)
 	if err != nil {
 		return err
 	}

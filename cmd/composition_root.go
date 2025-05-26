@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"delivery/internal/adapters/in/jobs"
 	kafkain "delivery/internal/adapters/in/kafka"
 	"delivery/internal/adapters/out/grpc/geo"
@@ -71,7 +70,6 @@ func (cr *CompositionRoot) NewMoveCouriersJob() cron.Job {
 func (cr *CompositionRoot) buildAssignOrderHandler() commands.AssignOrderCommandHandler {
 	var handler commands.AssignOrderCommandHandler
 	err := cr.container.Invoke(func(
-		ctx context.Context,
 		factory shared.TxManagerFactory,
 		dispatcher services.OrderDispatcher,
 	) {
@@ -100,7 +98,6 @@ func (cr *CompositionRoot) buildAssignOrderHandler() commands.AssignOrderCommand
 func (cr *CompositionRoot) buildCreateCourierHandler() commands.CreateCourierCommandHandler {
 	var handler commands.CreateCourierCommandHandler
 	err := cr.container.Invoke(func(
-		ctx context.Context,
 		factory shared.TxManagerFactory,
 	) {
 		txManager := factory.New()
@@ -124,7 +121,6 @@ func (cr *CompositionRoot) buildCreateCourierHandler() commands.CreateCourierCom
 func (cr *CompositionRoot) buildCreateOrderHandler() commands.CreateOrderCommandHandler {
 	var handler commands.CreateOrderCommandHandler
 	err := cr.container.Invoke(func(
-		ctx context.Context,
 		factory shared.TxManagerFactory,
 		geoClient ports.GeoLocationGateway,
 	) {
@@ -149,7 +145,6 @@ func (cr *CompositionRoot) buildCreateOrderHandler() commands.CreateOrderCommand
 func (cr *CompositionRoot) buildMoveCouriersHandler() commands.MoveCouriersCommandHandler {
 	var handler commands.MoveCouriersCommandHandler
 	err := cr.container.Invoke(func(
-		ctx context.Context,
 		factory shared.TxManagerFactory,
 	) {
 		txManager := factory.New()
