@@ -1,22 +1,112 @@
 # IDE
 .idea
 .vscode
+*.swp
+*.swo
+*~
 
-# Output of the go covetage tool
-*.out
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+coverage.xml
+*.cover
+.hypothesis/
 
-# Test binary `go test -c`
-*.test
-!.env.test
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
 
-# docker tmp files
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.*
+!.env.example
+!.env.template
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Logs
+*.log
+logs/
+*.log.*
+*.out.log
+
+# Docker
 build/docker/.env
 
-.git
+# Go (старые файлы, можно удалить после миграции)
+*.out
+*.test
 bin/*
 
+# Temporary files
 tmp/*
 !tmp/.keep
-
 .tmp/*
 !.tmp/.keep
+
+# FastAPI / Pydantic
+.pydantic_cache/
+*.pydantic.json
+
+# Backup files
+*.bak
+*.backup
+
+# Local configuration
+config.local.*
+settings.local.*
+local_settings.py
+
+# OS
+.DS_Store
+Thumbs.db
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db

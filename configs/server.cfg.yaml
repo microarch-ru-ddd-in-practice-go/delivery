@@ -1,9 +1,0 @@
-package: servers
-output: internal/generated/servers/servers.gen.go
-generate:
-  - types
-  - echo-server
-  - embedded-spec
-  - models
-  - strict-server
-import-mapping: {}
