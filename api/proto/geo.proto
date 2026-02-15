@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package geo;
+
+option csharp_namespace = "Clients.Geo";
+option java_package = "clients.geo";
+option java_outer_classname = "GeoProto";
+option go_package = "clients/geopb";
+
+// Geo service definition
+service Geo {
+  rpc GetGeolocation (GetGeolocationRequest) returns (GetGeolocationReply);
+}
+
+// Request
+message GetGeolocationRequest {
+  string street = 1;
+}
+
+// Response
+message GetGeolocationReply {
+  Location location = 1;
+}
+
+message Location {
+  int32 x = 1;
+  int32 y = 2;
+}
+
+message ErrorResponse {
+  string text = 1;
+}

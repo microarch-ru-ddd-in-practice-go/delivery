@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package order_event;
+
+option csharp_namespace = "Queues.Order";
+option java_package = "queues.order";
+option java_outer_classname = "OrderEventsProto";
+option go_package = "queues/orderpb";
+
+import "google/protobuf/timestamp.proto";
+
+message OrderCreatedIntegrationEvent {
+  string order_id = 1;
+}
+
+message OrderCompletedIntegrationEvent {
+  string order_id = 1;
+  string courier_id = 2;
+}

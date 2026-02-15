@@ -1,5 +1,5 @@
 # Демо проект к курсу "Domain Driven Design и Clean Architecture на языке Go"
-📚 Подробнее о курсе: [microarch.ru/courses/ddd/languages/go](https://microarch.ru/courses/ddd/languages/go?utm_source=gitlab&utm_medium=repository&utm_content=basket)
+📚 Подробнее о курсе: [https://microarch.ru/courses/ddd/languages/go](https://microarch.ru/courses/ddd/languages/go?utm_source=gitlab&utm_medium=repository&utm_content=basket)
 
 ---
 
@@ -52,7 +52,7 @@ VALUES
 
 # HTTP (генерация HTTP сервера)
 ```
-oapi-codegen -config configs/server.cfg.yaml https://gitlab.com/microarch-ru/ddd-in-practice/system-design/-/raw/main/services/delivery/contracts/openapi.yml 
+make generate-server
 ```
 
 # gRPC (генерация gRPC клиента)
@@ -60,9 +60,7 @@ oapi-codegen -config configs/server.cfg.yaml https://gitlab.com/microarch-ru/ddd
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 export PATH="$PATH:$(go env GOPATH)/bin"
 
-curl -o ./api/proto/geo_service.proto https://gitlab.com/microarch-ru/ddd-in-practice/system-design/-/raw/main/services/geo/contracts/contract.proto
-protoc --go_out=./internal/generated/clients --go-grpc_out=./internal/generated/clients ./api/proto/geo_service.proto
-
+make generate-grpc-clients
 ```
 
 # Kafka (генерация интеграционных сообщений)
@@ -70,16 +68,17 @@ protoc --go_out=./internal/generated/clients --go-grpc_out=./internal/generated/
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 export PATH="$PATH:$(go env GOPATH)/bin"
 
-curl -o ./api/proto/basket_confirmed.proto https://gitlab.com/microarch-ru/ddd-in-practice/system-design/-/raw/main/services/basket/contracts/basket_confirmed.proto
-protoc --go_out=./internal/generated ./api/proto/basket_confirmed.proto
-
-curl -o ./api/proto/order_status_changed.proto https://gitlab.com/microarch-ru/ddd-in-practice/system-design/-/raw/main/services/delivery/contracts/order_status_changed.proto
-protoc --go_out=./internal/generated ./api/proto/order_status_changed.proto
+make generate-queues
 ```
 
 # Тестирование
 ```
-mockery
+make test
+```
+
+# Качество кода
+```
+golangci-lint run
 ```
 
 # Документация используемых библилиотек

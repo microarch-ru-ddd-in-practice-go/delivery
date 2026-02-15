@@ -1,0 +1,43 @@
+all: false
+recursive: true
+with-expecter: true
+mockname: "{{.InterfaceName}}Mock"
+filename: "{{.MockName}}.go"
+outpkg: "{{.PackageName}}mocks"
+dir: ./mocks
+
+resolve-type-alias: false
+disable-version-string: true
+issue-845-fix: true
+
+packages:
+  delivery/internal/core/ports:
+    config:
+      dir: ./mocks/core/portsmocks
+    interfaces:
+      UnitOfWork:
+      UnitOfWorkFactory:
+      CourierRepository:
+      OrderRepository:
+      GeoClient:
+
+  delivery/internal/core/domain/services:
+    config:
+      dir: ./mocks/core/domain/servicesmocks
+    interfaces:
+      OrderDispatcher:
+
+  delivery/internal/core/application/commands:
+    config:
+      dir: ./mocks/core/application/commandsmocks
+    interfaces:
+      AssignOrdersCommandHandler:
+      CreateOrderCommandHandler:
+      MoveCouriersCommandHandler:
+
+  delivery/internal/core/application/queries:
+    config:
+      dir: ./mocks/core/application/queriesmocks
+    interfaces:
+      GetAllCouriersQueryHandler:
+      GetNotCompletedOrdersQueryHandler:

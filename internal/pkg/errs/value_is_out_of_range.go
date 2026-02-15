@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-var ErrValueIsOutOfRange = errors.New("value is out of range")
+var ErrMustBeBetween = errors.New("must be between")
 
-type ValueIsOutOfRangeError struct {
+type MustBeBetweenError struct {
 	ParamName string
 	Value     any
 	Min       any
@@ -16,8 +16,17 @@ type ValueIsOutOfRangeError struct {
 	Cause     error
 }
 
-func NewValueIsOutOfRangeErrorWithCause(paramName string, value any, min any, max any, cause error) *ValueIsOutOfRangeError {
-	return &ValueIsOutOfRangeError{
+func NewMustBeBetween(paramName string, value, min, max any) error {
+	return &MustBeBetweenError{
+		ParamName: paramName,
+		Value:     value,
+		Min:       min,
+		Max:       max,
+	}
+}
+
+func WrapMustBeBetween(paramName string, value, min, max any, cause error) error {
+	return &MustBeBetweenError{
 		ParamName: paramName,
 		Value:     value,
 		Min:       min,
@@ -26,29 +35,37 @@ func NewValueIsOutOfRangeErrorWithCause(paramName string, value any, min any, ma
 	}
 }
 
-func NewValueIsOutOfRangeError(paramName string, value any, min any, max any) *ValueIsOutOfRangeError {
-	return &ValueIsOutOfRangeError{
-		ParamName: paramName,
-		Value:     value,
-		Min:       min,
-		Max:       max,
-	}
-}
+func (e *MustBeBetweenError) Error() string {
+	value := sanitize(e.Value)
 
-func (e *ValueIsOutOfRangeError) Error() string {
 	if e.Cause != nil {
-		return fmt.Sprintf("%s: %s is %v, min value is %v, max value is %v (cause: %v)",
-			ErrValueIsInvalid, sanitize(e.Value), e.ParamName, e.Min, e.Max, e.Cause)
+		return fmt.Sprintf("%s: %s (%v) must be between %v and %v: %v",
+			ErrMustBeBetween,
+			e.ParamName,
+			value,
+			e.Min,
+			e.Max,
+			e.Cause,
+		)
 	}
-	return fmt.Sprintf("%s: %s is %v, min value is %v, max value is %v",
-		ErrValueIsInvalid, sanitize(e.Value), e.ParamName, e.Min, e.Max)
+
+	return fmt.Sprintf("%s: %s (%v) must be between %v and %v",
+		ErrMustBeBetween,
+		e.ParamName,
+		value,
+		e.Min,
+		e.Max,
+	)
 }
 
-func (e *ValueIsOutOfRangeError) Unwrap() error {
-	return ErrValueIsOutOfRange
+func (e *MustBeBetweenError) Unwrap() error {
+	if e.Cause != nil {
+		return e.Cause
+	}
+	return ErrMustBeBetween
 }
 
-func sanitize(input interface{}) string {
+func sanitize(input any) string {
 	str := fmt.Sprintf("%v", input)
 	return strings.ReplaceAll(str, "\n", " ")
 }

@@ -23,18 +23,18 @@ func main() {
 
 func getConfigs() cmd.Config {
 	config := cmd.Config{
-		HttpPort:                  goDotEnvVariable("HTTP_PORT"),
-		DbHost:                    goDotEnvVariable("DB_HOST"),
-		DbPort:                    goDotEnvVariable("DB_PORT"),
-		DbUser:                    goDotEnvVariable("DB_USER"),
-		DbPassword:                goDotEnvVariable("DB_PASSWORD"),
-		DbName:                    goDotEnvVariable("DB_NAME"),
-		DbSslMode:                 goDotEnvVariable("DB_SSLMODE"),
-		GeoServiceGrpcHost:        goDotEnvVariable("GEO_SERVICE_GRPC_HOST"),
-		KafkaHost:                 goDotEnvVariable("KAFKA_HOST"),
-		KafkaConsumerGroup:        goDotEnvVariable("KAFKA_CONSUMER_GROUP"),
-		KafkaBasketConfirmedTopic: goDotEnvVariable("KAFKA_BASKET_CONFIRMED_TOPIC"),
-		KafkaOrderChangedTopic:    goDotEnvVariable("KAFKA_ORDER_CHANGED_TOPIC"),
+		HttpPort:               goDotEnvVariable("HTTP_PORT"),
+		DbHost:                 goDotEnvVariable("DB_HOST"),
+		DbPort:                 goDotEnvVariable("DB_PORT"),
+		DbUser:                 goDotEnvVariable("DB_USER"),
+		DbPassword:             goDotEnvVariable("DB_PASSWORD"),
+		DbName:                 goDotEnvVariable("DB_NAME"),
+		DbSslMode:              goDotEnvVariable("DB_SSLMODE"),
+		GeoServiceGrpcHost:     goDotEnvVariable("GEO_SERVICE_GRPC_HOST"),
+		KafkaHost:              goDotEnvVariable("KAFKA_HOST"),
+		KafkaConsumerGroup:     goDotEnvVariable("KAFKA_CONSUMER_GROUP"),
+		KafkaBasketEventsTopic: goDotEnvVariable("KAFKA_BASKET_EVENTS_TOPIC"),
+		KafkaOrderEventsTopic:  goDotEnvVariable("KAFKA_ORDER_EVENTS_TOPIC"),
 	}
 	return config
 }

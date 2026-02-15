@@ -1,0 +1,13 @@
+version: 2
+
+run:
+  timeout: 5m
+  tests: false
+
+linters:
+  enable:
+    - govet
+    - errcheck
+    - staticcheck
+    - ineffassign
+    - bodyclose

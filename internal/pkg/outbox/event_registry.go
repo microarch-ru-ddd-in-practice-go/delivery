@@ -28,7 +28,7 @@ func NewEventRegistry() (EventRegistry, error) {
 
 func (r *eventRegistry) RegisterDomainEvent(eventType reflect.Type) error {
 	if eventType == nil {
-		return errs.NewValueIsRequiredError("eventType")
+		return errs.NewValueIsRequired("eventType")
 	}
 	eventName := eventType.Name()
 	r.EventRegistry[eventName] = eventType
