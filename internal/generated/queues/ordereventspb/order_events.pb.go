@@ -4,7 +4,7 @@
 // 	protoc        v3.21.12
 // source: api/proto/order_events.proto
 
-package orderpb
+package ordereventspb
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -122,14 +122,14 @@ var File_api_proto_order_events_proto protoreflect.FileDescriptor
 
 const file_api_proto_order_events_proto_rawDesc = "" +
 	"\n" +
-	"\x1capi/proto/order_events.proto\x12\vorder_event\x1a\x1fgoogle/protobuf/timestamp.proto\"9\n" +
+	"\x1capi/proto/order_events.proto\x12\forder.events\x1a\x1fgoogle/protobuf/timestamp.proto\"9\n" +
 	"\x1cOrderCreatedIntegrationEvent\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\tR\aorderId\"Z\n" +
 	"\x1eOrderCompletedIntegrationEvent\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\tR\aorderId\x12\x1d\n" +
 	"\n" +
-	"courier_id\x18\x02 \x01(\tR\tcourierIdB?\n" +
-	"\fqueues.orderB\x10OrderEventsProtoZ\x0equeues/orderpb\xaa\x02\fQueues.Orderb\x06proto3"
+	"courier_id\x18\x02 \x01(\tR\tcourierIdBS\n" +
+	"\x13queues.order.eventsB\x10OrderEventsProtoZ\x14queues/ordereventspb\xaa\x02\x13Queues.Order.Eventsb\x06proto3"
 
 var (
 	file_api_proto_order_events_proto_rawDescOnce sync.Once
@@ -145,8 +145,8 @@ func file_api_proto_order_events_proto_rawDescGZIP() []byte {
 
 var file_api_proto_order_events_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_api_proto_order_events_proto_goTypes = []any{
-	(*OrderCreatedIntegrationEvent)(nil),   // 0: order_event.OrderCreatedIntegrationEvent
-	(*OrderCompletedIntegrationEvent)(nil), // 1: order_event.OrderCompletedIntegrationEvent
+	(*OrderCreatedIntegrationEvent)(nil),   // 0: order.events.OrderCreatedIntegrationEvent
+	(*OrderCompletedIntegrationEvent)(nil), // 1: order.events.OrderCompletedIntegrationEvent
 }
 var file_api_proto_order_events_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type

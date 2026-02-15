@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package basket_event;
+package basket.events;
 
-option csharp_namespace = "Queues.Basket";
-option java_package = "queues.basket";
+option csharp_namespace = "Queues.Basket.Events";
+option java_package = "queues.basket.events";
 option java_outer_classname = "BasketEventsProto";
-option go_package = "queues/basketpb";
+option go_package = "queues/basketeventspb";
 
 import "google/protobuf/timestamp.proto";
 

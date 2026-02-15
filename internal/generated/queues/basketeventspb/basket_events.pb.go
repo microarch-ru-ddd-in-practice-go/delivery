@@ -4,7 +4,7 @@
 // 	protoc        v3.21.12
 // source: api/proto/basket_events.proto
 
-package basketpb
+package basketeventspb
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -306,12 +306,12 @@ var File_api_proto_basket_events_proto protoreflect.FileDescriptor
 
 const file_api_proto_basket_events_proto_rawDesc = "" +
 	"\n" +
-	"\x1dapi/proto/basket_events.proto\x12\fbasket_event\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf8\x01\n" +
+	"\x1dapi/proto/basket_events.proto\x12\rbasket.events\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfb\x01\n" +
 	"\x1fBasketConfirmedIntegrationEvent\x12\x1b\n" +
-	"\tbasket_id\x18\x01 \x01(\tR\bbasketId\x12/\n" +
-	"\aaddress\x18\x02 \x01(\v2\x15.basket_event.AddressR\aaddress\x12(\n" +
-	"\x05items\x18\x03 \x03(\v2\x12.basket_event.ItemR\x05items\x12E\n" +
-	"\x0fdelivery_period\x18\x04 \x01(\v2\x1c.basket_event.DeliveryPeriodR\x0edeliveryPeriod\x12\x16\n" +
+	"\tbasket_id\x18\x01 \x01(\tR\bbasketId\x120\n" +
+	"\aaddress\x18\x02 \x01(\v2\x16.basket.events.AddressR\aaddress\x12)\n" +
+	"\x05items\x18\x03 \x03(\v2\x13.basket.events.ItemR\x05items\x12F\n" +
+	"\x0fdelivery_period\x18\x04 \x01(\v2\x1d.basket.events.DeliveryPeriodR\x0edeliveryPeriod\x12\x16\n" +
 	"\x06volume\x18\x05 \x01(\x05R\x06volume\"\x83\x01\n" +
 	"\aAddress\x12\x18\n" +
 	"\acountry\x18\x01 \x01(\tR\acountry\x12\x12\n" +
@@ -327,8 +327,8 @@ const file_api_proto_basket_events_proto_rawDesc = "" +
 	"\bquantity\x18\x05 \x01(\x05R\bquantity\"4\n" +
 	"\x0eDeliveryPeriod\x12\x12\n" +
 	"\x04from\x18\x01 \x01(\x05R\x04from\x12\x0e\n" +
-	"\x02to\x18\x02 \x01(\x05R\x02toBC\n" +
-	"\rqueues.basketB\x11BasketEventsProtoZ\x0fqueues/basketpb\xaa\x02\rQueues.Basketb\x06proto3"
+	"\x02to\x18\x02 \x01(\x05R\x02toBW\n" +
+	"\x14queues.basket.eventsB\x11BasketEventsProtoZ\x15queues/basketeventspb\xaa\x02\x14Queues.Basket.Eventsb\x06proto3"
 
 var (
 	file_api_proto_basket_events_proto_rawDescOnce sync.Once
@@ -344,15 +344,15 @@ func file_api_proto_basket_events_proto_rawDescGZIP() []byte {
 
 var file_api_proto_basket_events_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_api_proto_basket_events_proto_goTypes = []any{
-	(*BasketConfirmedIntegrationEvent)(nil), // 0: basket_event.BasketConfirmedIntegrationEvent
-	(*Address)(nil),                         // 1: basket_event.Address
-	(*Item)(nil),                            // 2: basket_event.Item
-	(*DeliveryPeriod)(nil),                  // 3: basket_event.DeliveryPeriod
+	(*BasketConfirmedIntegrationEvent)(nil), // 0: basket.events.BasketConfirmedIntegrationEvent
+	(*Address)(nil),                         // 1: basket.events.Address
+	(*Item)(nil),                            // 2: basket.events.Item
+	(*DeliveryPeriod)(nil),                  // 3: basket.events.DeliveryPeriod
 }
 var file_api_proto_basket_events_proto_depIdxs = []int32{
-	1, // 0: basket_event.BasketConfirmedIntegrationEvent.address:type_name -> basket_event.Address
-	2, // 1: basket_event.BasketConfirmedIntegrationEvent.items:type_name -> basket_event.Item
-	3, // 2: basket_event.BasketConfirmedIntegrationEvent.delivery_period:type_name -> basket_event.DeliveryPeriod
+	1, // 0: basket.events.BasketConfirmedIntegrationEvent.address:type_name -> basket.events.Address
+	2, // 1: basket.events.BasketConfirmedIntegrationEvent.items:type_name -> basket.events.Item
+	3, // 2: basket.events.BasketConfirmedIntegrationEvent.delivery_period:type_name -> basket.events.DeliveryPeriod
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
